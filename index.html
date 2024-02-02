@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gluttonous-Snake</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body onload = 'main();'>
+    <h1 style="text-align: center;">贪吃蛇</h1>
+    <div id="gamezone">
+        <canvas id='canvas' width='500' height='500' style='border:2px solid #000000;'></canvas>
+    </div>
+
+    <div class="sidebar">
+        <h2>贪吃蛇</h2>
+        <div class="scoreboard">
+            <h3>Score:
+                <sco id="sco">0</sco>
+            </h3>
+        </div>
+        <div class="timeboard">
+            <h3>Time:
+                <timer id="time">00:00:00</timer>
+            </h3>
+        </div>
+        
+    </div>
+    <script src="game.js"></script>
+    
+</body>
+</html>

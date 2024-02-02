@@ -1,0 +1,24 @@
+.centered-text {
+    text-align: center;
+}
+.container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sidebar{
+    float:left;
+    margin:10px 10px;
+    padding: 10px 10px;
+    height: 850px;
+    width: 400px;
+}
+
+.gamezone{
+    float:left;
+    margin:10px 10px;
+    padding: 10px 10px;
+    height: 850px;
+    width: 900px;
+}
+ 

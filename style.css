@@ -1,24 +1,44 @@
-.centered-text {
-    text-align: center;
+body {
+    font-family: Arial, sans-serif;
 }
+
 .container {
     display: flex;
-    justify-content: flex-end;
+    align-items: stretch;
 }
 
-.sidebar{
-    float:left;
-    margin:10px 10px;
-    padding: 10px 10px;
-    height: 850px;
-    width: 400px;
+.left {
+    flex: 1;
 }
 
-.gamezone{
-    float:left;
-    margin:10px 10px;
-    padding: 10px 10px;
-    height: 850px;
-    width: 900px;
+.right {
+    flex: 1;
+    padding: 20px;
+    text-align: center; /* 文字居中 */
 }
- 
+
+canvas {
+    border: 1px solid #000;
+}
+
+h1 {
+    text-align: center;
+}
+
+.info {
+    margin-top: 30px; /* 调整行间距 */
+    text-align: left; /* 文字居左 */
+}
+
+.info div {
+    margin-bottom: 10px; /* 调整行间距 */
+    text-align: center; /* 文字居中 */
+}
+
+#score,
+#time,
+#difficulty,
+#mode {
+    font-weight: bold;
+    font-size: 18px; /* 增加字体大小 */
+}

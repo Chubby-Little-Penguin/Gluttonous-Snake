@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Gluttonous-Snake</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇游戏</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
-<body onload = 'main();'>
-    <h1 style="text-align: center;">贪吃蛇</h1>
-    <div id="gamezone">
-        <canvas id='canvas' width='500' height='500' style='border:2px solid #000000;'></canvas>
+<body onload="main();">
+    <div class="container">
+        <div class="left">
+            <canvas id="canvas" width="1000" height="800"></canvas>
+        </div>
+        <div class="right">
+            <h1>贪吃蛇</h1>
+            <div class="info">
+                <div>分数: <span id="score">0</span></div>
+                <div>时间: <span id="time">0:00</span></div>
+                <div>难度: <span id="difficulty">Easy</span></div>
+                <div>模式: <span id="mode">Normal</span></div>
+            </div>
+            <img src="snake_image.jpg" alt="贪吃蛇图片">
+        </div>
     </div>
 
-    <div class="sidebar">
-        <h2>贪吃蛇</h2>
-        <div class="scoreboard">
-            <h3>Score:
-                <sco id="sco">0</sco>
-            </h3>
-        </div>
-        <div class="timeboard">
-            <h3>Time:
-                <timer id="time">00:00:00</timer>
-            </h3>
-        </div>
-        
-    </div>
     <script src="game.js"></script>
-    
 </body>
 </html>

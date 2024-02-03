@@ -20,8 +20,8 @@ var food_y = -1;
 var flag = false;
 
 //创建地图数组
-const rows = 50;
-const cols = 50;
+const rows = canvas.width/Width+1;
+const cols = canvas.height/Height+1;
 const matrix = [];
 for (let i = 0; i < rows; i++) {
     matrix[i] = [];
@@ -65,7 +65,7 @@ function draw() {
 //检测是否吃到食物
 function detect_eat(){
     if (head_x <= food_x+1 && head_x>= food_x-1 && head_y <= food_y+1 && head_y >= food_y-1){
-        //matrix[food_x][food_y] = 0;
+        matrix[food_x][food_y] = 0;
         length++;
         generate_food();
     }
@@ -73,12 +73,14 @@ function detect_eat(){
 
 //移动蛇头和蛇身
 function move() {
+    console.log("move");
     //移动蛇头
     head_x += direction[dir][0];
     head_y += direction[dir][1];
     //移动蛇身
-    //matrix[head_x][head_y] = 1;
-    //matrix[body_x[length-1]][body_y[length-1]] = 0;
+    if (body_x.length == length){
+        matrix[body_x[length-1]][body_y[length-1]] = 0;
+    }
     for (var i=length-1; i>0; i--){
         body_x[i] = body_x[i-1];
         body_y[i] = body_y[i-1];
@@ -89,6 +91,8 @@ function move() {
     detect_eat();
     check_collision();
 
+    matrix[head_x][head_y] = 1;
+    
     draw();
 }
 
@@ -98,9 +102,11 @@ function check_collision() {
         alert("Game Over!");
         reset();
     }
-    if (matrix[head_x][head_y] == 1){
-        alert("Game Over!");
-        reset();
+    for (var i=length-1; i>0; i--){
+        if (head_x == body_x[i] && head_y == body_y[i]){
+            alert("Game Over!");
+            reset();
+        }
     }
 }
 
@@ -108,13 +114,14 @@ function check_collision() {
 function init() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     generate_food();
+    body_x[0] = head_x;
+    body_y[0] = head_y;
     draw();
 }
 
 function reset(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = 0; i < rows; i++) {
-        matrix[i] = [];
         for (let j = 0; j < cols; j++) {
             matrix[i][j] = 0; // 初始值为 0
         }
@@ -125,6 +132,7 @@ function reset(){
     head_y = Math.floor(Math.random()*canvas.height/Height);
     length = 1;
     dir = 4; //上左下右，0，1，2，3
+    time = 0;
 }
 //主循环
 function main() {
@@ -151,6 +159,9 @@ function main() {
                 if (dir != 1){
                     dir = 3;
                 }
+            }
+            if (pressedButton.key == 'Escape'){
+                alert("Game Stop");
             }
         }
     );
